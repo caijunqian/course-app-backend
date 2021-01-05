@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.InfoDao"><!-- 这里写的是 包名+类名 -->
+<!--    <select id="selectByCondition" resultType="Client">-->
+<!--        SELECT * FROM client-->
+<!--        <where>-->
+<!--            <if test="id != null">id like concat('%',#{id},'%')</if>-->
+<!--            <if test="name != null">AND name like concat('%',#{name},'%') </if>-->
+<!--            <if test="tel != null">AND tel like concat('%',#{tel},'%') </if>-->
+<!--            <if test="info != null">AND info like concat('%',#{info},'%') </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+<!--    <resultMap id="map" type="Client">-->
+<!--        <id column="id" property="id"/>-->
+<!--        <result column="name" property="name"/>-->
+<!--        <result column="tel" property="tel"/>-->
+<!--        <result column="info" property="info"/>-->
+<!--        <collection property="contracts" ofType="Contract">-->
+<!--            <result column="cid" property="id"/>-->
+<!--            <result column="contract_time" property="contractTime"/>-->
+<!--            <result column="state" property="state"/>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+<!--    <select id="selectByIdWithContract" resultMap="map">-->
+<!--        SELECT cli.id, `name`,tel,info,c.id cid, contract_time,state FROM client as cli, contract as c-->
+<!--        WHERE cli.id = c.client_id AND cli.id = #{param1}-->
+<!--    </select>-->
+</mapper>
