@@ -31,6 +31,7 @@ public String updatePwd(Integer userId,String oldPwd,String newPwd){}
 getCourseOfWeek（用户id）
 
 获取当天课程（用户id）
+
 获取第二天的截止未完成事件（用户id）
 
 事件接口：
@@ -54,7 +55,7 @@ create table info(
 
 create table term(
 	term_id int primary key auto_increment comment '学期id',
-    years varchar(4) comment '学年',
+    years varchar(10) comment '学年',
     up_down int comment '上下学期，0表示上学期，1表示下学期',
     open_time date comment '开学时间',
     cur int default 0 comment'是否是当前学期'
@@ -74,7 +75,7 @@ create table course(
 create table course_time(
 	course_time_id int primary key auto_increment comment '课程时间id',
     course_id int comment '课程id',
-    weekday varchar(12) comment '星期几上课',
+    weekday int comment '星期几上课0-6',
     classroom varchar(12) comment '课室',
     start_lesson varchar(12) comment '起始节',
     end_lesson varchar(12)  comment '终止节',
