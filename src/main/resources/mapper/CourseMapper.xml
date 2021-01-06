@@ -9,4 +9,11 @@
         from course c inner join course_time ct on c.course_id = ct.course_id
         where term_id=#{param1}  and  #{param2}&gt;=start_week and #{param2}&lt;=end_week and user_id=#{param3};
     </select>
+
+<!--    List<Course> selectCourseOfNextDay(Integer termId, Integer week,Integer weekDay,Integer userId);-->
+    <select id="selectCourseOfNextDay" resultType="Course">
+        select c.course_id,user_id,term_id,course_name,start_week,end_week,course_time_id,weekday,classroom,start_lesson,end_lesson
+        from course c inner join course_time ct on c.course_id = ct.course_id
+        where term_id=#{param1}  and  #{param2}&gt;=start_week and #{param2}&lt;=end_week and user_id=#{param3} and weekDay=#{param4};
+    </select>
 </mapper>

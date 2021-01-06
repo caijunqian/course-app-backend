@@ -45,4 +45,27 @@ public class CourseController {
         Gson gson = new Gson();
         return gson.toJson(result);
     }
+
+    @GetMapping(value = "/getCourseOfNextDay/{userId}",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getCourseOfNextDay(@PathVariable("userId") Integer userId) {
+        Result result = new Result();
+        try {
+            List<Course> courseOfNextDay = service.getCourseOfNextDay(userId);
+            if(courseOfNextDay==null || courseOfNextDay.size()==0){
+                result.setCode(204);
+                result.setMsg("没有课程存在");
+            }
+            else {
+                result.setCode(200);
+                result.setData(courseOfNextDay);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setCode(500);
+            result.setMsg("服务器繁忙！");
+        }
+        Gson gson = new Gson();
+        return gson.toJson(result);
+    }
 }

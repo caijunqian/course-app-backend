@@ -13,4 +13,6 @@ import java.util.List;
 @Repository
 public interface CourseDao {
     List<Course> selectCourseOfWeek(Integer termId, Integer week,Integer userId);
+
+    List<Course> selectCourseOfNextDay(Integer termId, Integer week,Integer userId,Integer weekDay);
 }

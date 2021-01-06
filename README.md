@@ -61,12 +61,33 @@ public String updatePwd(Integer userId,String oldPwd,String newPwd){}
   ]
 }
 */
+ @GetMapping(value = "/getCourseOfNextDay/{userId}",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getCourseOfNextDay(@PathVariable("userId") Integer userId) {}
+/*
+{
+  "code": 200,
+  "data": [
+    {
+      "courseId": 4,
+      "userId": 1,
+      "termId": 1,
+      "courseName": "软件需求分析",
+      "startWeek": 1,
+      "endWeek": 18,
+      "courseTimeId": 2,
+      "weekday": 3,
+      "classroom": "6D-403",
+      "startLesson": "1",
+      "endLesson": "2"
+    }
+  ]
+}
+*/
 ```
 ### 未实现：
 用户表接口：
 添加（用户）、查询（用户id）
-
-获取当天课程（用户id）
 
 获取第二天的截止未完成事件（用户id）
 
