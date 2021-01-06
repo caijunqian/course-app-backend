@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.CourseDao"><!-- 这里写的是 包名+类名 -->
+    <!-- List<Course> selectCourseOfWeek(Integer termId, Integer week,Integer userId); -->
+    <select id="selectCourseOfWeek" resultType="Course">
+        select c.course_id,user_id,term_id,course_name,start_week,end_week,course_time_id,weekday,classroom,start_lesson,end_lesson
+        from course c inner join course_time ct on c.course_id = ct.course_id
+        where term_id=#{param1}  and  #{param2}&gt;=start_week and #{param2}&lt;=end_week and user_id=#{param3};
+    </select>
+</mapper>

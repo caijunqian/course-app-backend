@@ -23,12 +23,48 @@ public String verify(@RequestParam("num") String num,@RequestParam("pwd")String 
 @ResponseBody
 public String updatePwd(Integer userId,String oldPwd,String newPwd){}
 ```
+**课程接口**
+```java
+@GetMapping(value = {"/getCourseOfWeek/{userId}","/getCourseOfWeek/{userId}/{week}"},produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getCourseOfWeek(@PathVariable("userId") Integer userId,@PathVariable(value = "week",required = false) Integer week){}
+/*
+{
+  "code": 200,
+  "data": [
+    {
+      "courseId": 4,
+      "userId": 1,
+      "termId": 1,
+      "courseName": "软件需求分析",
+      "startWeek": 1,
+      "endWeek": 18,
+      "courseTimeId": 1,
+      "weekday": 1,
+      "classroom": "6D-403",
+      "startLesson": "1",
+      "endLesson": "2"
+    },
+    {
+      "courseId": 4,
+      "userId": 1,
+      "termId": 1,
+      "courseName": "软件需求分析",
+      "startWeek": 1,
+      "endWeek": 18,
+      "courseTimeId": 2,
+      "weekday": 3,
+      "classroom": "6D-403",
+      "startLesson": "1",
+      "endLesson": "2"
+    }
+  ]
+}
+*/
+```
 ### 未实现：
 用户表接口：
 添加（用户）、查询（用户id）
-
-课程表接口：
-getCourseOfWeek（用户id）
 
 获取当天课程（用户id）
 
