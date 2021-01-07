@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 2726868668@qq.com
@@ -28,13 +30,15 @@ public class CourseController {
     public String getCourseOfWeek(@PathVariable("userId") Integer userId,@PathVariable(value = "week",required = false) Integer week) {
         Result result = new Result();
         try {
-            List<Course> courses = service.selectCourseOfWeek(userId,week);
+            Map<String,Integer> map = new HashMap<String,Integer>();
+            List<Course> courses = service.selectCourseOfWeek(userId,week,map);
             if(courses==null || courses.size()==0){
                 result.setCode(204);
-                result.setMsg("没有课程存在");
+                result.setMsg(map.get("week").toString());
             }
             else{
                 result.setCode(200);
+                result.setMsg(map.get("week").toString());
                 result.setData(courses);
             }
         }catch (Exception e){

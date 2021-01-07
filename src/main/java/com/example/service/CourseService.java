@@ -11,10 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author 2726868668@qq.com
@@ -29,10 +26,12 @@ public class CourseService {
     @Autowired
     TermDao termDao;
 
+    //map用于返回周数
     @Transactional
-    public List<Course> selectCourseOfWeek(Integer userId,Integer week) throws ParseException {
+    public List<Course> selectCourseOfWeek(Integer userId, Integer week, Map<String,Integer> map) throws ParseException {
         Term term = termDao.selectCurTerm();
         if(week==null)week = getNumOfWeek(term,new Date()); //算出第几周
+        map.put("week",week);
         //根据termId和周数，用户id查出当周课程
         return dao.selectCourseOfWeek(term.getTermId(),week,userId);
     }
