@@ -6,7 +6,7 @@
 推送当天课程
 所有课程增删改查
 根据每天的课表动态手机状态
-查看所有作业（今天以后的所有作业）、前一天推送作业消息（未完成）
+查看所有作业（今天以后的所有作业）、前一天推送作业消息（未标记完成的作业）
 事件增删查
 
 
@@ -85,18 +85,34 @@ public String updatePwd(Integer userId,String oldPwd,String newPwd){}
 }
 */
 ```
+
+**事件接口**
+```java
+    //添加事件{userId:userId，name:name，detail:name，endTime:yyyy-MM-dd，canDelete:1}
+    @PostMapping(value = "/item",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String insertItem(Item item) {}
+    
+    //删除事件
+    @DeleteMapping(value = "/item/{itemId}", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String deleteItem(@PathVariable("itemId")Integer itemId){}
+    
+    //获取最近20件，已完成(isFinished=1)或未完成事件(isFinished=0)
+    @GetMapping(value = "/items/{userId}/{isFinished}", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String selectItems(@PathVariable("isFinished")Integer isFinished,@PathVariable("userId")Integer userId){}
+
+    //获取明天截止的未标记完成的事件
+    @GetMapping(value = "/expiringItems/{userId}", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String selectDeadlineItems(@PathVariable("userId")Integer userId){}
+```
+
 ### 未实现：
 用户表接口：
 添加（用户）、查询（用户id）
 
-获取第二天的截止未完成事件（用户id）
-
-事件接口：
-获取（用户id）
-
-增加（事件）
-   
-删除（事件id）
 
 ## 数据库：
 
@@ -145,7 +161,7 @@ create table item(
     detail varchar(50) comment '详情',
     end_time date comment '截止时间',
     can_delete int default 1 comment '是否可删除，默认1表示可以，0表示不行',
-    is_finish int default 0 comment '是否完成，1表示已完成，默认0表示未完成',
+    is_finished int default 0 comment '是否完成，1表示已完成，默认0表示未完成',
     user_id int comment '用户id',
     foreign key (user_id) references info(user_id)
 )comment '条目表';
