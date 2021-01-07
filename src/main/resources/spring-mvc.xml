@@ -11,8 +11,19 @@
 
     <!-- 前端控制器的静态资源问题 -->
     <mvc:default-servlet-handler/><!-- 处理一些静态资源,非jsp，jsp是交由jspServlet进行处理 -->
-    <mvc:annotation-driven/>
 
+<!--    <mvc:annotation-driven/>-->
+    <!-- 注册转化器与验证器 -->
+    <mvc:annotation-driven conversion-service="conversion-service"/>
+    <!-- 转换器服务工厂Bean -->
+    <bean id="conversion-service"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.example.util.DateConverter" />
+            </set>
+        </property>
+    </bean>
     <!-- 视图解析器 -->
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="suffix" value=".jsp"/>
