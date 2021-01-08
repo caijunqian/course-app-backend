@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.bean.Course;
+import com.example.bean.CourseTime;
 import com.example.bean.Term;
 import com.example.dao.CourseDao;
 import com.example.dao.TermDao;
@@ -76,9 +77,16 @@ public class CourseService {
     }
 
     @Transactional
-    public void addCourseToCurTermByUser(Integer userId) {
-//        Term term = termDao.selectCurTerm();
-//        Integer termId = term.getTermId();
-//        dao.addCourseToCurTermByUser();
+    public void addCourseToCurTermByUser(Course course) {
+        Term term = termDao.selectCurTerm();
+        Integer termId = term.getTermId();
+        course.setTermId(termId);
+        dao.insertCourse(course);
+        if(course.getCourseId()!=null &&
+                course.getCourseTimes()!=null && course.getCourseTimes().size()!=0){
+            for(CourseTime courseTime:course.getCourseTimes())
+                courseTime.setCourseId(course.getCourseId());
+            dao.insertCourseTimes(course.getCourseTimes());
+        }
     }
 }

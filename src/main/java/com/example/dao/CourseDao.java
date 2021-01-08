@@ -1,6 +1,10 @@
 package com.example.dao;
 
 import com.example.bean.Course;
+import com.example.bean.CourseTime;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,5 +22,9 @@ public interface CourseDao {
 
     List<Course> selectCurCourseByUserId(Integer userId,Integer termId);
 
-    void addCourseToCurTermByUser(Course course);
+    @Insert("insert into course values(null,#{userId},#{termId},#{courseName},#{startWeek},#{endWeek})")
+    @Options(useGeneratedKeys = true, keyProperty = "courseId", keyColumn = "course_id")
+    void insertCourse(Course course);
+
+    void insertCourseTimes(List<CourseTime> courseTimes);
 }

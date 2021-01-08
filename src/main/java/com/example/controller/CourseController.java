@@ -87,8 +87,7 @@ public class CourseController {
     @PostMapping(value = "/addCourse",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String addCourseToCurTermByUser(@RequestBody Course course){
-        System.out.println(course);
-//        service.addCourseToCurTermByUser(userId);
+        service.addCourseToCurTermByUser(course);
         new Result();
         Gson gson = new Gson();
         return gson.toJson(new Result());

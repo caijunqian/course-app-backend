@@ -38,4 +38,12 @@
             <result column="end_lesson" property="endLesson"/>
         </collection>
     </resultMap>
+
+<!--    void insertCourseTimes(List<CourseTime> courseTimes);-->
+    <insert id="insertCourseTimes">
+        insert into course_time values
+        <foreach collection="list" item="obj" index="index" separator=",">
+            (null,#{obj.courseId},#{obj.weekday},#{obj.classroom},#{obj.startLesson},#{obj.endLesson})
+        </foreach>
+    </insert>
 </mapper>
