@@ -25,7 +25,7 @@ public class TermController {
     public String toTerm(Model model){
         List<Term> terms = service.selectAll();
         model.addAttribute("terms",terms);
-        return "term/terms";
+        return "pages/terms";
     }
     @PostMapping("/term")
     public String addTerm(Term term){

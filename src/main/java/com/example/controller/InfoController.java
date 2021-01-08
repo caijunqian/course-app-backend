@@ -7,7 +7,10 @@ import com.example.util.Result;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author 2726868668@qq.com
@@ -57,5 +60,19 @@ public class InfoController {
         }
         Gson gson = new Gson();
         return gson.toJson(result);
+    }
+
+    @GetMapping("/toInfos")
+    public String toInfos(Model model){
+        List<Info> infos = service.selectAll();
+        model.addAttribute("infos",infos);
+        return "pages/infos";
+    }
+
+    @PostMapping("/addInfo")
+    public String addInfo(Info info){
+        System.out.println(info);
+        service.insert(info);
+        return "redirect:/info/toInfos";
     }
 }

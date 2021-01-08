@@ -20,7 +20,7 @@
     </ul>
     <ul class="nav nav-sidebar">
         <li id="term"><a href="${pageContext.request.contextPath}/toTerm">学年学期</a></li>
-        <li id="student"><a href="${pageContext.request.contextPath}/toStudent">学生管理</a></li>
+        <li id="info"><a href="${pageContext.request.contextPath}/info/toInfos">学生管理</a></li>
         <li id="course"><a href="${pageContext.request.contextPath}/toCourse">课程管理</a></li>
     </ul>
 

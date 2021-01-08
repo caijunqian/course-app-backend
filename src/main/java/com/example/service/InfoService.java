@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.TreeMap;
+
 /**
  * @author 2726868668@qq.com
  * @date 2021/1/5 10:12
@@ -37,5 +40,9 @@ public class InfoService {
         if(!info.getPwd().equals(oldPwd))throw new InfoException("旧密码错误");
         info.setPwd(newPwd);
         dao.update(info);
+    }
+    @Transactional(readOnly = true)
+    public List<Info> selectAll(){
+        return dao.selectAll();
     }
 }

@@ -18,4 +18,8 @@ public class MainController {
             return "/dashboard";
         return "redirect:/index.jsp?MSG=1";
     }
+    @GetMapping("/home")
+    public String home(String username,String password){
+        return "/dashboard";
+    }
 }

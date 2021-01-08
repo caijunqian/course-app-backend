@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>销售管理系统</title>
+<title>APP后台管理</title>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
