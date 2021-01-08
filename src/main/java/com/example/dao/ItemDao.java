@@ -24,11 +24,11 @@ public interface ItemDao {
     void delete(Integer itemId);
 
     /*查出最近20个未完成的Item*/
-    @Select("select * from item where user_id=#{param1} and is_finished=0 order by end_time")
+    @Select("select * from item where user_id=#{param1} and is_finished=0 order by end_time limit 20")
     List<Item> selectUnfinishedByUserId(Integer userId);
 
     /*查出最近20个已完成的Item*/
-    @Select("select * from item where user_id=#{param1} and is_finished=1 order by end_time desc")
+    @Select("select * from item where user_id=#{param1} and is_finished=1 order by end_time desc limit 20")
     List<Item> selectFinishedByUserId(Integer userId);
 
     /*查询date到期且未完成的item*/
