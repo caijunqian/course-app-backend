@@ -6,11 +6,9 @@ import com.example.util.Result;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,5 +69,28 @@ public class CourseController {
         }
         Gson gson = new Gson();
         return gson.toJson(result);
+    }
+
+    @GetMapping("/courses/{userId}")
+    public String getCourseByUser(@PathVariable("userId")Integer userId, Model model){
+        List<Course> courses = service.selectCurCourseByUserId(userId);
+        model.addAttribute("courses",courses);
+        model.addAttribute("userId",userId);
+        return "pages/courses";
+    }
+
+    @GetMapping("/toAddCourse/{userId}")
+    public String toAddCourse(@PathVariable("userId")Integer userId){
+        return "pages/addCourse";
+    }
+
+    @PostMapping(value = "/addCourse",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String addCourseToCurTermByUser(@RequestBody Course course){
+        System.out.println(course);
+//        service.addCourseToCurTermByUser(userId);
+        new Result();
+        Gson gson = new Gson();
+        return gson.toJson(new Result());
     }
 }

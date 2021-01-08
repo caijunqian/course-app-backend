@@ -16,4 +16,26 @@
         from course c inner join course_time ct on c.course_id = ct.course_id
         where term_id=#{param1}  and  #{param2}&gt;=start_week and #{param2}&lt;=end_week and user_id=#{param3} and weekDay=#{param4};
     </select>
+
+<!--   List<Course> selectCurCourseByUserId(Integer userId,Integer termId); -->
+    <select id="selectCurCourseByUserId" resultMap="courseMap">
+    select c.*, ct.course_time_id,ct.weekday,ct.classroom,ct.start_lesson,ct.end_lesson
+    from course as c left join course_time as ct on c.course_id = ct.course_id
+    where user_id=#{param1} and term_id=#{param2}
+    </select>
+    <resultMap id="courseMap" type="Course">
+        <id column="course_id" property="courseId"/>
+        <result column="user_id" property="userId"/>
+        <result column="term_id" property="termId"/>
+        <result column="course_name" property="courseName"/>
+        <result column="start_week" property="startWeek"/>
+        <result column="end_week" property="endWeek"/>
+        <collection property="courseTimes" ofType="CourseTime">
+            <id column="course_time_id" property="courseTimeId"/>
+            <result column="weekday" property="weekday"/>
+            <result column="classroom" property="classroom"/>
+            <result column="start_lesson" property="startLesson"/>
+            <result column="end_lesson" property="endLesson"/>
+        </collection>
+    </resultMap>
 </mapper>

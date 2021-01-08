@@ -68,4 +68,18 @@ public class CourseService {
         Integer week=days/7+1;
         return week;
     }
+
+    @Transactional(readOnly = true)
+    public List<Course> selectCurCourseByUserId(Integer userId){
+        Term term = termDao.selectCurTerm();
+        Integer termId = term.getTermId();
+        return dao.selectCurCourseByUserId(userId, termId);
+    }
+
+    @Transactional
+    public void addCourseToCurTermByUser(Integer userId) {
+//        Term term = termDao.selectCurTerm();
+//        Integer termId = term.getTermId();
+//        dao.addCourseToCurTermByUser();
+    }
 }

@@ -15,4 +15,8 @@ public interface CourseDao {
     List<Course> selectCourseOfWeek(Integer termId, Integer week,Integer userId);
 
     List<Course> selectCourseOfNextDay(Integer termId, Integer week,Integer userId,Integer weekDay);
+
+    List<Course> selectCurCourseByUserId(Integer userId,Integer termId);
+
+    void addCourseToCurTermByUser(Course course);
 }

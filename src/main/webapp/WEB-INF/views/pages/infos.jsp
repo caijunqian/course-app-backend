@@ -13,7 +13,7 @@
 <head>
     <%@include file="../common/head.jsp" %>
     <script type="text/javascript">
-        function createTerm() {
+        function createNew() {
             let content=`
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/info/addInfo">
                 <fieldset>
@@ -70,7 +70,7 @@
             <h2 class="sub-header">学生查看</h2>
             <h4 class="sub-header">
                 <button class="btn btn-info" data-toggle="modal" data-target="#myModal"
-                        onclick="createTerm()">
+                        onclick="createNew()">
                     添加新学生
                 </button>
             </h4>
