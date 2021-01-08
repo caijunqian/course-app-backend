@@ -19,12 +19,9 @@
         <li id="dashboard"><a href="${pageContext.request.contextPath}/home">控制面板 <span class="sr-only">(current)</span></a></li>
     </ul>
     <ul class="nav nav-sidebar">
-        <li id="salesmen"><a href="${pageContext.request.contextPath}/salesmen">销售人员管理</a></li>
-        <li id="clients"><a href="${pageContext.request.contextPath}/clients">客户信息管理</a></li>
-        <li id="contracts"><a href="${pageContext.request.contextPath}/contracts">合同信息管理</a></li>
-    </ul>
-    <ul class="nav nav-sidebar">
-        <li id="invoices"><a href="${pageContext.request.contextPath}/invoices">发货单</a></li>
+        <li id="term"><a href="${pageContext.request.contextPath}/toTerm">学年学期</a></li>
+        <li id="student"><a href="${pageContext.request.contextPath}/toStudent">学生管理</a></li>
+        <li id="course"><a href="${pageContext.request.contextPath}/toCourse">课程管理</a></li>
     </ul>
 
 </div>
