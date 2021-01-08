@@ -50,8 +50,8 @@ public class CourseService {
         //得到明天星期几
         Integer weekDay=null;
         int weekInd = calendar.get(Calendar.DAY_OF_WEEK);
-        if(weekInd==0)weekDay=6;
-        else weekDay=weekInd-2;
+        if(weekInd==1)weekDay=7;    //周日weekInd=1，数据库中为7
+        else weekDay=weekInd-1; //周1-6，weekInd=2-7，数据库中为1-6
         //根据termId和周数，用户id查出当周课程
         return dao.selectCourseOfNextDay(term.getTermId(),week,userId,weekDay);
     }
@@ -65,8 +65,7 @@ public class CourseService {
         Date from = simpleDateFormat.parse(fromDate);
         Date to = simpleDateFormat.parse(toDate);
         int days = (int) ((to.getTime() - from.getTime())/(1000 * 60 * 60 * 24));
-        Integer week=days/7+1;
-        return week;
+        return days/7+1;
     }
 
     @Transactional(readOnly = true)

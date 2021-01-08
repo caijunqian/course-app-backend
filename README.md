@@ -149,7 +149,7 @@ create table course(
 create table course_time(
 	course_time_id int primary key auto_increment comment '课程时间id',
     course_id int comment '课程id',
-    weekday int comment '星期几上课0-6',
+    weekday int comment '星期几上课1-7（星期一开始）',
     classroom varchar(12) comment '课室',
     start_lesson varchar(12) comment '起始节',
     end_lesson varchar(12)  comment '终止节',
