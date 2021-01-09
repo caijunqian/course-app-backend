@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="msg">截止日期</label>
                         <div class="col-md-4">
-                            <input class="form-control" id="msg" type="text" name="endTime" required/>
+                            <input class="form-control" id="msg" type="date" name="endTime" required/>
                         </div>
                     </div>
                     <div class="form-group">
