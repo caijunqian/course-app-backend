@@ -34,4 +34,7 @@ public interface ItemDao {
     /*查询date到期且未完成的item*/
     @Select("select * from item where user_id=#{param1} and is_finished=0 and end_time=#{param2}")
     List<Item> selectExpiringByUserId(Integer userId, String dateStr);
+
+    @Select("select * from item where user_id=#{param1}")
+    List<Item> selectAllByUserId(Integer userId);
 }

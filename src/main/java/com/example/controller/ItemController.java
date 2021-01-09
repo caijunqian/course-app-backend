@@ -1,11 +1,13 @@
 package com.example.controller;
 
+import com.example.bean.Course;
 import com.example.bean.Item;
 import com.example.service.ItemService;
 import com.example.util.Result;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -105,5 +107,22 @@ public class ItemController {
         }
         Gson gson = new Gson();
         return gson.toJson(result);
+    }
+
+    //以上是接口，以下是后台管理需要用的
+    @RequestMapping("/items/{userId}")
+    public String getCourseByUser(@PathVariable("userId")Integer userId, Model model){
+        List<Item> items = service.selectAllItems(userId);
+        model.addAttribute("items",items);
+        model.addAttribute("userId",userId);
+        return "pages/items";
+    }
+
+    @PostMapping("/addItem")
+    public String addCourseToCurTermByUser(Item item){
+        item.setCanDelete(0);
+        item.setIsFinished(0);
+        service.addItemByUser(item);
+        return "redirect:/items/"+item.getUserId();
     }
 }

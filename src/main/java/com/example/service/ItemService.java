@@ -48,4 +48,14 @@ public class ItemService {
         String dateStr = simpleDateFormat.format(date);
         return dao.selectExpiringByUserId(userId,dateStr);
     }
+
+    @Transactional(readOnly = true)
+    public List<Item> selectAllItems(Integer userId) {
+        return dao.selectAllByUserId(userId);
+    }
+
+    @Transactional
+    public void addItemByUser(Item item) {
+        dao.insert(item);
+    }
 }
