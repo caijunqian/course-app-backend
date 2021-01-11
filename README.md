@@ -108,6 +108,10 @@ public String updatePwd(Integer userId,String oldPwd,String newPwd){}
     @GetMapping(value = "/expiringItems/{userId}", produces = "application/json;charset=utf-8")
     @ResponseBody
     public String selectDeadlineItems(@PathVariable("userId")Integer userId){}
+
+    //更改事件的完成状态
+    @PutMapping(value = "/markFinished/{itemId}/{isFinished}",produces = "application/json;charset=utf-8")
+    public String markFinished(@PathVariable("itemId")Integer itemId,@PathVariable("isFinished")Integer isFinished){}
 ```
 
 ### 未实现：

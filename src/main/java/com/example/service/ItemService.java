@@ -58,4 +58,9 @@ public class ItemService {
     public void addItemByUser(Item item) {
         dao.insert(item);
     }
+
+    @Transactional
+    public void markFinished(Integer itemId,Integer isFinished){
+        dao.markFinished(itemId,isFinished);
+    }
 }

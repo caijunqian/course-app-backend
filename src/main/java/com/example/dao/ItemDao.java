@@ -4,6 +4,7 @@ import com.example.bean.Item;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -37,4 +38,7 @@ public interface ItemDao {
 
     @Select("select * from item where user_id=#{param1}")
     List<Item> selectAllByUserId(Integer userId);
+
+    @Update("update item set is_finished=#{param2} where item_id = #{param1}")
+    void markFinished(Integer itemId,Integer isFinished);
 }

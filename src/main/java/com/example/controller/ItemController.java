@@ -109,6 +109,15 @@ public class ItemController {
         return gson.toJson(result);
     }
 
+    @PutMapping(value = "/markFinished/{itemId}/{isFinished}",produces = "application/json;charset=utf-8")
+    public String markFinished(@PathVariable("itemId")Integer itemId,@PathVariable("isFinished")Integer isFinished){
+        service.markFinished(itemId,isFinished);
+        Result result = new Result();
+        result.setCode(200);
+        Gson gson = new Gson();
+        return gson.toJson(result);
+    }
+
     //以上是接口，以下是后台管理需要用的
     @RequestMapping("/items/{userId}")
     public String getCourseByUser(@PathVariable("userId")Integer userId, Model model){
