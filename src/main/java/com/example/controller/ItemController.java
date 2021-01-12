@@ -110,6 +110,7 @@ public class ItemController {
     }
 
     @PutMapping(value = "/markFinished/{itemId}/{isFinished}",produces = "application/json;charset=utf-8")
+    @ResponseBody
     public String markFinished(@PathVariable("itemId")Integer itemId,@PathVariable("isFinished")Integer isFinished){
         service.markFinished(itemId,isFinished);
         Result result = new Result();

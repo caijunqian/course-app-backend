@@ -111,6 +111,7 @@ public String updatePwd(Integer userId,String oldPwd,String newPwd){}
 
     //更改事件的完成状态
     @PutMapping(value = "/markFinished/{itemId}/{isFinished}",produces = "application/json;charset=utf-8")
+    @ResponseBody
     public String markFinished(@PathVariable("itemId")Integer itemId,@PathVariable("isFinished")Integer isFinished){}
 ```
 
